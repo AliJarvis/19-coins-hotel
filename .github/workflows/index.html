@@ -1,0 +1,206 @@
+The 19 Coins Hotel — Good Food. Great Atmosphere. Isiolo. tailwind.config = { theme: { extend: { colors: { cream: { DEFAULT:'#FAF3E7', soft:'#F3E9D6', card:'#FBF6E8' }, forest: { 950:'#0F1F17', 900:'#16281F', 800:'#1E392B', 700:'#274934' }, gold: { 400:'#DDB565', 500:'#CB9C43', 600:'#B0823A' }, ink: { DEFAULT:'#211D16', soft:'#4A443A' }, }, fontFamily: { display:['Fraunces','Georgia','serif'], body:['Inter','system-ui','sans-serif'] }, maxWidth: { content:'1180px' }, borderRadius: { card:'14px' }, }} }; :root{ padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); } html{ scroll-behavior:smooth; scroll-padding-top:64px; } body{ font-family:'Inter',system-ui,sans-serif; background:#FAF3E7; color:#211D16; } .font-display{ font-family:'Fraunces',Georgia,serif; } ::selection{ background:#CB9C43; color:#16281F; } :focus-visible{ outline:2px solid #CB9C43; outline-offset:2px; } .no-scrollbar::-webkit-scrollbar{ display:none; } .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; } .tab-active{ background:#16281F; color:#FAF3E7; } .tab-inactive{ background:#FBF6E8; color:#4A443A; } header{ top:env(safe-area-inset-top,0px); } .drawer-open{ transform:translateX(0) !important; } @media (prefers-reduced-motion: reduce){ *{ transition-duration:.001ms !important; scroll-behavior:auto !important; } } 
+
+19 Coins Hotel Menu Rooms Gallery Location 
+
+💬 WhatsApp 🛒0 ☰ 
+
+Menu Rooms Gallery Location 💬 Message on WhatsApp 
+
+📍 Isiolo, Kenya
+
+The 19 Coins Hotel 
+
+Good Food. Great Atmosphere. Isiolo.
+
+Enjoy great food, comfortable hospitality and a welcoming atmosphere in the heart of Isiolo.
+
+🍴 View Menu 💬 Order / Reserve via WhatsApp 🧭 Find Us 
+
+🍴 View Menu 💬 WhatsApp 📞 Call Us 🧭 Directions 
+
+Why 19 Coins
+
+A Place to Eat, Relax & Stay 
+
+A digital experience for guests looking for good food, a welcoming stop and clear ways to reach the hotel while travelling through Isiolo.
+
+Menu Preview
+
+Something Delicious Awaits 
+
+Demo dishes are listed here so the hotel can swap in real names, photos and prices later without redesigning the page.
+
+View Full Menu 💬 Order via WhatsApp 
+
+WhatsApp Experience
+
+Order or Reserve in Seconds 
+
+Choose what you'd like, add a few details, then continue to WhatsApp with a message already filled in for you.
+
+What would you like to do?
+
+💬 Continue on WhatsApp 
+
+Replace the placeholder WhatsApp number in the config once the hotel confirms its real number.
+
+Stay
+
+Rooms 
+
+Room details below are placeholders — add the hotel's real room types, rates and photos.
+
+Gallery
+
+A Look Inside 
+
+Placeholder tiles — replace with real photos of the hotel, rooms and dishes.
+
+Visit Us
+
+Find The 19 Coins Hotel 📍Add physical address here, Isiolo, Kenya 📞+254 7XX XXX XXX 💬Available via WhatsApp during opening hours 
+
+🧭 Get Directions 
+
+📍
+
+Add a Google Maps embed URL in the site configuration to show a live map here.
+
+19 Coins Hotel
+
+Isiolo, Kenya
+
+© The 19 Coins Hotel. All rights reserved.
+
+💬
+
+🛒 Your Order
+
+✕ 
+
+const CONFIG = { shortName: "19 Coins Hotel", town: "Isiolo, Kenya", mapsLink: "https://www.google.com/maps/search/?api=1&query=Isiolo+Kenya", phoneDisplay: "+254 7XX XXX XXX", phoneDial: "+2547XXXXXXXX", whatsappNumber: "2547XXXXXXXX", // PLACEHOLDER — replace with the real WhatsApp Business number hours: [ {label:"Breakfast",value:"7:00 AM – 10:30 AM"}, {label:"Lunch",value:"12:00 PM – 3:30 PM"}, {label:"Dinner",value:"6:30 PM – 10:00 PM"} ], rooms: [ {name:"Standard Room", description:"Add a short, accurate description of this room type.", rate:null}, {name:"Executive Room", description:"Add a short, accurate description of this room type.", rate:null} ], features: [ {icon:"🍴",title:"Great Food",description:"A menu that's easy to browse, update and order from."}, {icon:"🛏️",title:"Comfortable Hospitality",description:"Rooms and service presented clearly, no invented details."}, {icon:"☕",title:"Relaxed Atmosphere",description:"A warm space guests can picture before they arrive."}, {icon:"📍",title:"Convenient Isiolo Location",description:"Directions, calling and WhatsApp are always within reach."} ], }; const CATEGORIES = [ {id:"breakfast",label:"Breakfast"}, {id:"lunch",label:"Lunch"}, {id:"dinner",label:"Dinner"}, {id:"drinks",label:"Drinks"}, {id:"takeaway",label:"Takeaway"} ]; const MENU_ITEMS = [ {id:"breakfast-plate",category:"breakfast",name:"Breakfast Plate",description:"A warm morning option for guests and visitors.",price:null}, {id:"morning-porridge",category:"breakfast",name:"Morning Porridge",description:"Placeholder breakfast item — update with real recipe and price.",price:null}, {id:"lunch-favourite",category:"lunch",name:"Lunch Favourite",description:"A satisfying lunch option presented as demo content.",price:null}, {id:"grilled-plate",category:"lunch",name:"Grilled Lunch Plate",description:"Placeholder lunch item — swap in the hotel's signature dish.",price:null}, {id:"dinner-special",category:"dinner",name:"Dinner Special",description:"A dinner dish placeholder ready for verified menu and pricing.",price:null}, {id:"evening-stew",category:"dinner",name:"Evening Stew",description:"Placeholder dinner item — replace with real dish name and image.",price:null}, {id:"fresh-juice",category:"drinks",name:"Fresh Juice",description:"Placeholder drink — confirm real flavours and pricing.",price:null}, {id:"coffee-tea",category:"drinks",name:"Coffee / Tea",description:"Placeholder hot drink option.",price:null}, {id:"takeaway-option",category:"takeaway",name:"Takeaway Option",description:"A convenient takeaway listing.",price:null}, ]; const CURRENCY = "KES"; let cart = {}; // id -> quantity let activeCategory = "breakfast"; let activeIntent = "dinner"; function waLink(message, number){ const digits = (number || CONFIG.whatsappNumber).replace(/\D/g,""); return `https://wa.me/${digits}?text=${encodeURIComponent(message.trim())}`; } function itemById(id){ return MENU_ITEMS.find(i=>i.id===id); } function renderFeatures(){ document.getElementById("features-grid").innerHTML = CONFIG.features.map(f=>` 
+
+${f.icon}
+
+${f.title} 
+
+${f.description}
+
+`).join(""); } function renderTabs(){ document.getElementById("menu-tabs").innerHTML = CATEGORIES.map(c=>` ${c.label}`).join(""); } function setCategory(id){ activeCategory=id; renderTabs(); renderMenuGrid(); } function renderMenuGrid(){ const items = MENU_ITEMS.filter(i=>i.category===activeCategory); document.getElementById("menu-grid").innerHTML = items.map(item=>{ const qty = cart[item.id]||0; const priceLabel = item.price!==null ? `${CURRENCY} ${item.price.toLocaleString()}` : "Price to be added"; const control = qty===0 ? `Add` : `
+
+− ${qty} + 
+
+`; return `
+
+🍽️
+
+${item.category}
+
+${item.name} 
+
+${item.description}
+
+${priceLabel} ${control} 
+
+`; }).join(""); } function addItem(id){ cart[id]=(cart[id]||0)+1; renderMenuGrid(); renderCart(); openCart(); } function changeQty(id,delta){ cart[id]=(cart[id]||0)+delta; if(cart[id]{ const item=itemById(id); count+=qty; if(item.price!==null) subtotal+=item.price*qty; else hasUnpriced=true; }); return {count,subtotal,hasUnpriced}; } function renderCart(){ const {count,subtotal,hasUnpriced} = cartTotals(); const badge = document.getElementById("cart-badge"); if(count>0){ badge.classList.remove("hidden"); badge.classList.add("flex"); badge.textContent=count; } else { badge.classList.add("hidden"); badge.classList.remove("flex"); } const linesEl = document.getElementById("cart-lines"); const ids = Object.keys(cart); if(ids.length===0){ linesEl.innerHTML = `
+
+Your cart is empty. Add something from the menu to get started.
+
+`; } else { linesEl.innerHTML = `` + ids.map(id=>{ const item=itemById(id); const qty=cart[id]; const priceLabel = item.price!==null ? `${CURRENCY} ${item.price.toLocaleString()} each` : "Price to be added"; return ` 
+
+${item.name}
+
+${priceLabel}
+
+− ${qty} + 
+
+🗑️ `; }).join("") + ``; } const footer = document.getElementById("cart-footer"); if(ids.length===0){ footer.classList.add("hidden"); return; } footer.classList.remove("hidden"); footer.innerHTML = ` 
+
+${count} item${count!==1?'s':''} ${subtotal>0 ? `${CURRENCY} ${subtotal.toLocaleString()}${hasUnpriced?' +':''}` : 'To be confirmed'} 
+
+${hasUnpriced ? `
+
+Some items don't have a price yet — the hotel will confirm the total on WhatsApp.
+
+` : ''} 
+
+</div> <a id="cart-checkout" href="#" target="_blank" class="mt-3 flex items-center justify-center gap-2 rounded-full bg-gold-500 px-5 py-3 text-sm font-semibold text-forest-950 hover:bg-gold-400">💬 Send Order via WhatsApp</a> 
+
+; const updateLink = ()=>{ const name=document.getElementById("cart-name").value; const notes=document.getElementById("cart-notes").value; const lines = ids.map(id=>{ const item=itemById(id); const qty=cart[id]; return • ${qty}x ${item.name}${item.price!==null? (${CURRENCY} ${(item.price*qty).toLocaleString()}):' (price to confirm)'}; }).join("\n"); const msg = [Hello ${CONFIG.shortName}, I'd like to place an order:,"",lines,"", subtotal>0 ? Subtotal: ${CURRENCY} ${subtotal.toLocaleString()}${hasUnpriced?' (plus items with price to confirm)':''} : "Total: to be confirmed", "", name?Name: ${name}:"Name: ", notes?Notes: ${notes}`:""].filter(Boolean).join("\n");
+document.getElementById("cart-checkout").href = waLink(msg);
+};
+updateLink();
+document.getElementById("cart-name").addEventListener("input",updateLink);
+document.getElementById("cart-notes").addEventListener("input",updateLink);
+}
+function openCart(){ document.getElementById("cart-overlay").classList.remove("hidden"); setTimeout(()=>document.getElementById("cart-panel").classList.add("drawer-open"),10); }
+function closeCart(){ document.getElementById("cart-panel").classList.remove("drawer-open"); setTimeout(()=>document.getElementById("cart-overlay").classList.add("hidden"),300); }
+
+function renderRooms(){
+document.getElementById("rooms-grid").innerHTML = CONFIG.rooms.map(room=>{
+const link = waLink(Hello ${CONFIG.shortName}, I'd like to check availability for the ${room.name}.);
+return <div class="flex flex-col rounded-card border border-forest-900/8 bg-cream-card p-5 shadow sm:flex-row sm:items-center sm:gap-5"> <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-forest-900/8 text-2xl">🛏️</div> <div class="mt-4 flex-1 sm:mt-0"> <h3 class="font-display text-lg font-medium text-forest-900">${room.name}</h3> <p class="mt-1 text-sm leading-relaxed text-ink-soft">${room.description}</p> <p class="mt-2 text-sm font-semibold text-forest-900">${room.rate ?? "Rate to be added"}</p> </div> <a href="${link}" target="_blank" class="mt-4 inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-forest-900 px-4 py-2.5 text-xs font-semibold text-cream hover:bg-forest-800 sm:mt-0">💬 Check Availability</a> </div>;
+}).join("");
+}
+function renderGallery(){
+document.getElementById("gallery-grid").innerHTML = Array.from({length:8}).map(()=>
+<div class="flex aspect-square items-center justify-center rounded-card bg-gradient-to-br from-forest-800 to-forest-900 text-cream/20 text-2xl">🍽️</div>).join("");
+}
+function renderHours(){
+document.getElementById("hours-grid").innerHTML = CONFIG.hours.map(h=>
+<div><p class="text-xs font-medium uppercase tracking-wide text-gold-600">${h.label}</p><p class="mt-1 text-xs leading-snug text-ink-soft">${h.value}</p></div>).join("");
+}
+function renderIntents(){
+const intents=[ {id:"breakfast",label:"Breakfast",icon:"☕",desc:"Continue with a breakfast enquiry message."},
+{id:"lunch",label:"Lunch",icon:"🍴",desc:"Start a lunch order or enquiry."},
+{id:"dinner",label:"Dinner",icon:"🍴",desc:"Ask about dinner availability."},
+{id:"room",label:"Room",icon:"🛏️",desc:"Check room availability and rates."} ];
+document.getElementById("intent-grid").innerHTML = intents.map(i=> <button onclick="setIntent('${i.id}')" class="flex flex-col items-start gap-2 rounded-card border p-3 text-left ${activeIntent===i.id?'border-gold-500 bg-gold-500/10':'border-cream/10 hover:border-cream/25'}"> <span class="text-lg">${i.icon}</span> <span class="text-sm font-medium text-cream">${i.label}</span> <span class="text-xs leading-snug text-cream/55">${i.desc}</span> </button>).join("");
+updateReservationLink(intents);
+}
+function setIntent(id){ activeIntent=id; renderIntents(); }
+function updateReservationLink(intents){
+const build = ()=>{
+const label = (intents||[{id:"breakfast",label:"Breakfast"},{id:"lunch",label:"Lunch"},{id:"dinner",label:"Dinner"},{id:"room",label:"Room"}]).find(i=>i.id===activeIntent).label;
+const name=document.getElementById("rsv-name").value;
+const party=document.getElementById("rsv-party").value;
+const date=document.getElementById("rsv-date").value;
+const details=document.getElementById("rsv-details").value;
+const msg=[Hello ${CONFIG.shortName}, I'd like to enquire about ${label.toLowerCase()}.,"",
+name?Name: ${name}:"Name: ", party?Party size: ${party}:"", date?Date / time: ${date}:"", details?Details: ${details}:""]
+.filter(Boolean).join("\n");
+document.getElementById("rsv-link").href = waLink(msg);
+};
+build();
+["rsv-name","rsv-party","rsv-date","rsv-details"].forEach(id=>{
+const el=document.getElementById(id);
+el.removeEventListener("input",el._h||(()=>{}));
+el._h = build;
+el.addEventListener("input",build);
+});
+}
+function toggleMobileNav(){ document.getElementById("mobile-nav").classList.toggle("hidden"); }
+
+function wireStaticLinks(){
+const genericWa = waLink(Hello ${CONFIG.shortName}, I'd like to place an order / make a reservation.);
+const questionWa = waLink(Hello ${CONFIG.shortName}, I have a question.);
+const menuWa = waLink(Hello ${CONFIG.shortName}, could I see the full menu, please?);
+document.getElementById("header-wa").href = genericWa;
+document.getElementById("mobile-wa").href = genericWa;
+document.getElementById("hero-wa").href = genericWa;
+document.getElementById("qa-wa").href = genericWa;
+document.getElementById("menu-wa").href = menuWa;
+document.getElementById("fab-wa").href = questionWa;
+document.getElementById("hero-directions").href = CONFIG.mapsLink;
+document.getElementById("qa-directions").href = CONFIG.mapsLink;
+document.getElementById("loc-directions").href = CONFIG.mapsLink;
+document.getElementById("qa-call").href = tel:${CONFIG.phoneDial};
+document.getElementById("loc-phone").href = tel:${CONFIG.phoneDial};
+document.getElementById("loc-phone").textContent = CONFIG.phoneDisplay;
+document.getElementById("year").textContent = new Date().getFullYear();
+}
+
+renderFeatures(); renderTabs(); renderMenuGrid(); renderRooms(); renderGallery(); renderHours(); renderIntents(); wireStaticLinks();
+
+Give the live preview first
+
